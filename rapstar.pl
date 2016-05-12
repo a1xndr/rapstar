@@ -30,8 +30,10 @@ my $cols = @{$pattern[0]}; # Assuming the number of columns is the same across a
 
 for (my $i=0; $i < $cols; $i++) {
     for (my $j=0; $j < $rows; $j++) {
-        system("git", "commit", "--allow-empty", "-m", 
-            "This commit is literally nothing", "--date", $date  );
+        if($pattern[$j][$i]!=0){
+            system("git", "commit", "--allow-empty", "-m", 
+                "This commit is literally nothing", "--date", $date  );
+        }
         $date->add(days => 1); 
     }
 }
